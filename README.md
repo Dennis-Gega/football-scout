@@ -1,3 +1,7 @@
+# Football Scout
+
+A c++ program that looks for undervalued players in the market.
+
 ## Run Locally
 
 Clone the project
