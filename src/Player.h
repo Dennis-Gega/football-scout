@@ -10,8 +10,9 @@ private:
     std::string name;
     std::string position;
     
+    long long value;
+    
     int player_id;
-    int value;
     int age;
     int goals;
     int assists;
@@ -21,7 +22,7 @@ private:
 
 
 public:
-    Player() : player_id{0}, value{0}, age{0}, goals{0},
+    Player() : player_id{0}, value{0LL}, age{0}, goals{0},
     assists{0}, goals_per_90{0.0f}, assists_per_90{0.0f},
     name{""}, position{""} {}
     
@@ -32,6 +33,16 @@ public:
             goals(goals), assists(assists),
             goals_per_90(goals_per_90), assists_per_90(assists_per_90),
             name(name), position(position) {}
+    
+    std::string getName() const { return name; }
+    std::string getPosition() const { return position; }
+    long long getValue() const { return value; }
+    int getPlayerId() const { return player_id; }
+    int getAge() const { return age; }
+    int getGoals() const { return goals; }
+    int getAssists() const { return assists; }
+    float getGoalsPer90() const { return goals_per_90; }
+    float getAssistsPer90() const { return assists_per_90; }
     
     void print_info() const
     {
