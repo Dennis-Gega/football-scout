@@ -1,6 +1,6 @@
 # Football Scout
 
-A c++ program that looks for undervalued players in the market.
+A c++ program that uses real-world data to scout undervalured football players.
 
 
 ## Run Locally
