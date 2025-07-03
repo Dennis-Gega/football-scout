@@ -17,8 +17,9 @@ private:
     int goals;
     int assists;
     
-    float goals_per_90;
-    float assists_per_90;
+    double goals_per_90;
+    double assists_per_90;
+    double goals_contributions_per_90;
 
 
 public:
@@ -27,7 +28,7 @@ public:
     name{""}, position{""} {}
     
     Player(int player_id, int value, int age, int goals, int assists,
-             float goals_per_90, float assists_per_90,
+             double goals_per_90, double assists_per_90,
              const std::string& name, const std::string& position)
           : player_id(player_id), value(value), age(age),
             goals(goals), assists(assists),
@@ -41,8 +42,8 @@ public:
     int getAge() const { return age; }
     int getGoals() const { return goals; }
     int getAssists() const { return assists; }
-    float getGoalsPer90() const { return goals_per_90; }
-    float getAssistsPer90() const { return assists_per_90; }
+    double getGoalsPer90() const { return goals_per_90; }
+    double getAssistsPer90() const { return assists_per_90; }
     
     void print_info() const
     {
