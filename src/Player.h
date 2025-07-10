@@ -11,6 +11,7 @@ enum Position {
     UNKNOWN
 };
 
+
 class Player
 {
 public:

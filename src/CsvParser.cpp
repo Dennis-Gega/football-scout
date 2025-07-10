@@ -5,6 +5,14 @@
 #include <string>
 #include <sstream>
 
+
+Position StringToPosition(std::string position) {
+    if (position == "DF") return Position::DEFENDER;
+    if (position == "MF") return Position::MIDFIELDER;
+    if (position == "FW") return Position::FORWARD;
+    return Position::UNKNOWN;
+}
+
 std::vector<Player> loadPlayersFromCsv(std::string& filepath)
 {
     std::vector<Player> players;
@@ -36,7 +44,7 @@ std::vector<Player> loadPlayersFromCsv(std::string& filepath)
             std::stof(stats[17]), // goals_per_90
             std::stof(stats[18]), // assists_per_90
             stats[1],             // name
-            stats[4],             // position
+            StringToPosition(stats[4]),             // position
         };
         
 
