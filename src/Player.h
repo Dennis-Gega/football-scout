@@ -51,17 +51,33 @@ public:
     double getAssistsPer90() const { return assists_per_90; }
 
     // Normalized values
-    double getNormalizedValue() const { return normalized_value; }
-    double getNormalizedAge() const { return normalized_age; }
-    double getNormalizedGoals() const { return normalized_goals; }
-    double getNormalizedAssists() const { return normalized_assists; }
-    double getNormalizedGoalsPer90() const { return normalized_goals_per_90; }
-    double getNormalizedAssistsPer90() const { return normalized_assists_per_90; }
-    double getNormalizedGoalsContributionsPer90() const { return normalized_goals_contributions_per_90; }
+    void setNormalizedValue(const double value) { normalized_value = value; }
+    void setNormalizedAge(const double value) { normalized_age = value; }
+    void setNormalizedGoals(const double value) { normalized_goals = value; }
+    void setNormalizedAssists(const double value) { normalized_assists = value; }
+    void setNormalizedGoalsPer90(const double value) { normalized_goals_per_90 = value; }
+    void setNormalizedAssistsPer90(const double value) { normalized_assists_per_90 = value; }
+    void setNormalizedGoalsContributionsPer90(double value) { normalized_goals_contributions_per_90 = value; }
 
-    void print_info() const
-    {
-        std::cout << name << ", value: " << value << '\n';
+void print_info() const {
+        std::cout << "Player ID: " << player_id
+                << "\nName: " << name
+                << "\nPosition: " << position
+                << "\nValue: " << value
+                << "\nAge: " << age
+                << "\nGoals: " << goals
+                << "\nAssists: " << assists
+                << "\nGoals per 90: " << goals_per_90
+                << "\nAssists per 90: " << assists_per_90
+                << "\nGoals contributions per 90: " << goals_contributions_per_90
+                << "\nNormalized value: " << normalized_value
+                << "\nNormalized age: " << normalized_age
+                << "\nNormalized goals: " << normalized_goals
+                << "\nNormalized assists: " << normalized_assists
+                << "\nNormalized goals per 90: " << normalized_goals_per_90
+                << "\nNormalized assists per 90: " << normalized_assists_per_90
+                << "\nNormalized goals contributions per 90: " << normalized_goals_contributions_per_90
+                << "\n";
     }
 
 private:
