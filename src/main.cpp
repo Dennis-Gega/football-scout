@@ -11,9 +11,9 @@ int main()
     FeatureEngineer::normalizeNumericalFeatures(players);
     FeatureEngineer::calculateIndividualPercentiles(players);
     FeatureEngineer::calculatePerformanceScore(players);
+    FeatureEngineer::calculateUndervaluationScore(players);
+    FeatureEngineer fe; // Create an instance
+    fe.generateReport(players, 10); //
 
-    
-    for (int i = 110; i < 125; i++)
-        players[i].print_info();
     return 0;
 }

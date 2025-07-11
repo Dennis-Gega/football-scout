@@ -44,6 +44,8 @@ public:
     Position getPosition() const { return position; }
     double getPerformanceScore() const { return performance_score; }
     double setPerformanceScore(double score) { return performance_score = score; }
+    double getUndervaluationScore() const { return undervaluation_score; }
+    double setUndervaluationScore(double score) { return undervaluation_score = score; }
     long long getValue() const { return value; }
     int getPlayerId() const { return player_id; }
     int getAge() const { return age; }
@@ -78,7 +80,7 @@ public:
     double getPercentileRankValue() const { return percentile_rank_value; }
 
 void print_info() const {
-    // Helper function to print section header
+    // Helper functions to print section header
     auto print_header = [](const std::string& header) {
         std::cout << "\n=== " << header << " ===\n";
     };
@@ -124,6 +126,7 @@ private:
     std::string name;
     Position position;
     double performance_score;
+    double undervaluation_score;
 
     // Raw values
     long long value;

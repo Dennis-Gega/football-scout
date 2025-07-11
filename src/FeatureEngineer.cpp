@@ -114,6 +114,70 @@ void FeatureEngineer::calculatePerformanceScore(std::vector<Player> &players) {
     }
 }
 
+void FeatureEngineer::calculateUndervaluationScore(std::vector<Player> &players) {
+    for (Player &player: players) {
+        player.setUndervaluationScore(player.getPerformanceScore() - player.getPercentileRankValue());
+    }
+}
+
+void FeatureEngineer::sortByUndervaluationScore(std::vector<Player> &players) {
+    std::sort(players.begin(), players.end(), [](const Player &a, const Player &b) {
+        return a.getUndervaluationScore() > b.getUndervaluationScore();
+    });
+}
+
+void FeatureEngineer::printPositionHeader(Position pos) {
+    std::cout << "\n=== Most Undervalued "
+            << (pos == FORWARD ? "Forwards" : pos == MIDFIELDER ? "Midfielders" : "Defenders")
+            << " ===" << std::endl;
+}
+
+void FeatureEngineer::generateReport(const std::vector<Player> &players, int num_top_players) {
+    std::vector<Player> forwards, midfielders, defenders;
+
+    // Group players by position
+    for (const Player &player: players) {
+        switch (player.getPosition()) {
+            case FORWARD:
+                forwards.push_back(player);
+                break;
+            case MIDFIELDER:
+                midfielders.push_back(player);
+                break;
+            case DEFENDER:
+                defenders.push_back(player);
+                break;
+            default: ;
+        }
+    }
+
+    // Sort each group by undervaluation score
+    auto compareByUndervaluation = [](const Player &a, const Player &b) {
+        return a.getUndervaluationScore() > b.getUndervaluationScore();
+    };
+
+    std::sort(forwards.begin(), forwards.end(), compareByUndervaluation);
+    std::sort(midfielders.begin(), midfielders.end(), compareByUndervaluation);
+    std::sort(defenders.begin(), defenders.end(), compareByUndervaluation);
+
+    // Print top players for each position
+    printPositionHeader(FORWARD);
+    for (int i = 0; i < std::min(num_top_players, static_cast<int>(forwards.size())); ++i) {
+        forwards[i].print_info();
+    }
+
+    printPositionHeader(MIDFIELDER);
+    for (int i = 0; i < std::min(num_top_players, static_cast<int>(midfielders.size())); ++i) {
+        midfielders[i].print_info();
+    }
+
+    printPositionHeader(DEFENDER);
+    for (int i = 0; i < std::min(num_top_players, static_cast<int>(defenders.size())); ++i) {
+        defenders[i].print_info();
+    }
+}
+
+
 void FeatureEngineer::applyNormalization(std::vector<Player>& players, const PlayerStats &stats) {
     for (Player& player : players) {
         player.setNormalizedAge(stats.ages.normalize(player.getAge()));

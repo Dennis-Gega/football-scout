@@ -43,7 +43,11 @@ public:
     static void normalizeNumericalFeatures(std::vector<Player>& players);
     static void calculateIndividualPercentiles(std::vector<Player> &players);
     static void calculatePerformanceScore(std::vector<Player> &players);
+    static void calculateUndervaluationScore(std::vector<Player> &players);
+    static void sortByUndervaluationScore(std::vector<Player> &players);
+    void generateReport(const std::vector<Player>& players, int num_top_players);
 private:
+    void printPositionHeader(Position pos);  // Add this line
     template<typename T>
     static double calculatePercentileRank(std::vector<T> &values, T value);
 
