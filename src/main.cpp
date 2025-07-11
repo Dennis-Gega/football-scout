@@ -9,8 +9,11 @@ int main()
     std::string filepath = "../data/football_player_data.csv";
     std::vector<Player> players = loadPlayersFromCsv(filepath);
     FeatureEngineer::normalizeNumericalFeatures(players);
+    FeatureEngineer::calculateIndividualPercentiles(players);
+    FeatureEngineer::calculatePerformanceScore(players);
+
     
-    for (int i = 0; i < 5; i++)
+    for (int i = 110; i < 125; i++)
         players[i].print_info();
     return 0;
 }
