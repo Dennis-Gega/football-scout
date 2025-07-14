@@ -12,8 +12,7 @@ int main()
     FeatureEngineer::calculateIndividualPercentiles(players);
     FeatureEngineer::calculatePerformanceScore(players);
     FeatureEngineer::calculateUndervaluationScore(players);
-    FeatureEngineer fe; // Create an instance
-    fe.generateReport(players, 10); //
+    FeatureEngineer::generateReport(players, 10); //
 
     return 0;
 }

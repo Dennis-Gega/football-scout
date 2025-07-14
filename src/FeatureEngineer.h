@@ -40,20 +40,57 @@ struct PlayerStats {
  */
 class FeatureEngineer {
 public:
+    /**
+     * @brief Normalizes numerical attributes (such as goals, assists, values, etc.)
+     *        for a given collection of players.
+     * @param players A vector containing Player objects, representing the
+     *                collection of players whose numerical attributes need to be normalized.
+     */
     static void normalizeNumericalFeatures(std::vector<Player>& players);
+
+    /**
+     * @brief Calculates the individual percentile ranks for various attributes
+     *        (such as age, goals, assists, values, etc.) for a given collection of players.
+     * @param players A vector containing Player objects, representing the
+     *                collection of players whose individual percentiles are to be calculated.
+     */
     static void calculateIndividualPercentiles(std::vector<Player> &players);
     static void calculatePerformanceScore(std::vector<Player> &players);
     static void calculateUndervaluationScore(std::vector<Player> &players);
-    static void sortByUndervaluationScore(std::vector<Player> &players);
-    void generateReport(const std::vector<Player>& players, int num_top_players);
+    static void generateReport(const std::vector<Player>& players, int num_top_players);
 private:
-    void printPositionHeader(Position pos);  // Add this line
+    static void sortByUndervaluationScore(std::vector<Player> &players);
+    /**
+     * @brief Prints a formatted header for each position group in the report
+     * @param pos The position (FORWARD, MIDFIELDER, or DEFENDER) to create the header for
+     */
+    static void printPositionHeader(Position pos);
+
+    /**
+     * @brief Calculates the percentile rank of a value within a sorted vector of values
+     * @tparam T The numeric type of the values being ranked
+     * @param values Vector of sorted values to calculate the percentile against
+     * @param value The specific value to find the percentile rank for
+     * @return The percentile rank as a value between 0 and 1
+     */
     template<typename T>
     static double calculatePercentileRank(std::vector<T> &values, T value);
 
+    /**
+     * @brief Calculates statistical information for all numerical attributes across all players
+     * @param players Vector of players to analyze
+     * @return PlayerStats struct containing min/max values for all numerical attributes
+     */
     static PlayerStats calculateStats(std::vector<Player> &players);
+
+    /**
+     * @brief Calculates statistical information for all numerical attributes across all players
+     * @param players Vector of players to analyze
+     * @return PlayerStats struct containing min/max values for all numerical attributes
+     */
     static void applyNormalization(std::vector<Player> &players, const PlayerStats &stats);
 
+    // Static vectors to store all values for percentile calculations
     static std::vector<int> all_ages;
     static std::vector<int> all_goals;
     static std::vector<int> all_assists;
