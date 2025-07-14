@@ -5,7 +5,9 @@
 #include <string>
 #include <sstream>
 
-
+/**
+ * @brief Convert strings into Position struct
+ */
 Position StringToPosition(std::string position) {
     if (position == "DF") return Position::DEFENDER;
     if (position == "MF") return Position::MIDFIELDER;
@@ -36,17 +38,17 @@ std::vector<Player> loadPlayersFromCsv(std::string& filepath)
         }
 
         Player player {
-            std::stoi(stats[0]),  // player_id
-            std::stoi(stats[2]),  // market_value
-            std::stoi(stats[7]),  // age
-            std::stoi(stats[11]), // goals
-            std::stoi(stats[12]), // assists
-            std::stof(stats[17]), // goals_per_90
-            std::stof(stats[18]), // assists_per_90
-            stats[1],             // name
-            StringToPosition(stats[4]),             // position
+            std::stoi(stats[0]),        // player_id
+            std::stoi(stats[2]),        // market_value
+            std::stoi(stats[7]),        // age
+            std::stoi(stats[11]),       // goals
+            std::stoi(stats[12]),       // assists
+            std::stof(stats[17]),       // goals_per_90
+            std::stof(stats[18]),       // assists_per_90
+            stats[1],                   // name
+            StringToPosition(stats[4]), // position
         };
-        
+
 
         players.push_back(player);
     }
