@@ -9,4 +9,11 @@ int main()
     std::string filepath = "../data/football_player_data.csv";
     std::vector<Player> players = loadPlayersFromCsv(filepath);
     FeatureEngineer::normalizeNumericalFeatures(players);
+    FeatureEngineer::calculateIndividualPercentiles(players);
+    FeatureEngineer::calculatePerformanceScore(players);
+    FeatureEngineer::calculateUndervaluationScore(players);
+    FeatureEngineer fe; // Create an instance
+    fe.generateReport(players, 10); //
+
+    return 0;
 }

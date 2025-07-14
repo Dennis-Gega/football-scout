@@ -30,6 +30,7 @@ struct PlayerStats {
     MinMax<double> goals_per_90;
     MinMax<double> assists_per_90;
     MinMax<double> contributions_per_90;
+    MinMax<long long> values;
 };
 
 /**
@@ -40,9 +41,26 @@ struct PlayerStats {
 class FeatureEngineer {
 public:
     static void normalizeNumericalFeatures(std::vector<Player>& players);
+    static void calculateIndividualPercentiles(std::vector<Player> &players);
+    static void calculatePerformanceScore(std::vector<Player> &players);
+    static void calculateUndervaluationScore(std::vector<Player> &players);
+    static void sortByUndervaluationScore(std::vector<Player> &players);
+    void generateReport(const std::vector<Player>& players, int num_top_players);
 private:
+    void printPositionHeader(Position pos);  // Add this line
+    template<typename T>
+    static double calculatePercentileRank(std::vector<T> &values, T value);
+
     static PlayerStats calculateStats(std::vector<Player> &players);
     static void applyNormalization(std::vector<Player> &players, const PlayerStats &stats);
+
+    static std::vector<int> all_ages;
+    static std::vector<int> all_goals;
+    static std::vector<int> all_assists;
+    static std::vector<double> all_goals_per_90;
+    static std::vector<double> all_assists_per_90;
+    static std::vector<double> all_contributions_per_90;
+    static std::vector<long long> all_values;
 };
 
 #endif //FEATURE_ENGINEER_H
