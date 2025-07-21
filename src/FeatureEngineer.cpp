@@ -1,13 +1,7 @@
-//
-// Created by dennis gega on 7/10/25.
-//
-
 #include "FeatureEngineer.h"
 
 #include <algorithm>
-#include <map>
 
-// Add these definitions at the top of the file, before any function definitions
 std::vector<int> FeatureEngineer::all_ages;
 std::vector<int> FeatureEngineer::all_goals;
 std::vector<int> FeatureEngineer::all_assists;
@@ -37,87 +31,6 @@ PlayerStats FeatureEngineer::calculateStats(std::vector<Player> &players) {
     }
 
     return stats;
-}
-
-template<typename T>
-double FeatureEngineer::calculatePercentileRank(std::vector<T> &values, T value) {
-    return std::distance(values.begin(), std::lower_bound(values.begin(), values.end(), value)) / static_cast<double>(values.size());
-}
-
-void FeatureEngineer::calculateIndividualPercentiles(std::vector<Player> &players) {
-    for (Player &player : players) {
-        player.setPercentileRankAge(calculatePercentileRank(all_ages, player.getAge()));
-        player.setPercentileRankGoals(calculatePercentileRank(all_goals, player.getGoals()));
-        player.setPercentileRankAssists(calculatePercentileRank(all_assists, player.getAssists()));
-        player.setPercentileRankGoalsPer90(calculatePercentileRank(all_goals_per_90, player.getGoalsPer90()));
-        player.setPercentileRankAssistsPer90(calculatePercentileRank(all_assists_per_90, player.getAssistsPer90()));
-        player.setPercentileRankGoalsContributionsPer90(calculatePercentileRank(all_contributions_per_90, player.getGoalsPer90() + player.getAssistsPer90()));
-        player.setPercentileRankValue(calculatePercentileRank(all_values, player.getValue()));
-    }
-}
-
-void FeatureEngineer::calculatePerformanceScore(std::vector<Player> &players) {
-    std::map<std::string, double> fw_weights {
-        {"age", 0.20},
-        {"goals", 0.20},
-        {"assists", 0.05},
-        {"goals_per_90", 0.20},
-        {"assists_per_90", 0.05},
-        {"contributions_per_90", 0.30}
-    };
-
-    std::map<std::string, double> mf_weights{
-        {"age", 0.20},
-        {"goals", 0.10},
-        {"assists", 0.15},
-        {"goals_per_90", 0.10},
-        {"assists_per_90", 0.15},
-        {"contributions_per_90", 0.30}
-    };
-
-    std::map<std::string, double> df_weights{
-        {"age", 0.30},
-        {"goals", 0.05},
-        {"assists", 0.10},
-        {"goals_per_90", 0.05},
-        {"assists_per_90", 0.20},
-        {"contributions_per_90", 0.30}
-    };
-
-    for (Player &player: players) {
-        const std::map<std::string, double> *weights;
-        switch (player.getPosition()) {
-            case FORWARD:
-                weights = &fw_weights;
-                break;
-            case MIDFIELDER:
-                weights = &mf_weights;
-                break;
-            case DEFENDER:
-                weights = &df_weights;
-                break;
-            default:
-                weights = &fw_weights;
-        }
-
-
-        double score =
-                weights->at("age") * player.getPercentileRankAge() +
-                weights->at("goals") * player.getPercentileRankGoals() +
-                weights->at("assists") * player.getPercentileRankAssists() +
-                weights->at("goals_per_90") * player.getPercentileRankGoalsPer90() +
-                weights->at("assists_per_90") * player.getPercentileRankAssistsPer90() +
-                weights->at("contributions_per_90") * player.getPercentileRankGoalsContributionsPer90();
-
-
-        player.setPerformanceScore(score);
-    }
-}
-
-void FeatureEngineer::calculateUndervaluationScore(std::vector<Player> &players) {
-    for (Player &player: players) {
-        player.setUndervaluationScore(player.getPerformanceScore() - player.getPercentileRankValue());
-    }
 }
 
 void FeatureEngineer::sortByUndervaluationScore(std::vector<Player> &players) {

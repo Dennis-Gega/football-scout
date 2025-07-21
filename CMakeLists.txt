@@ -4,4 +4,6 @@ project(football_scout VERSION 1.0
   LANGUAGES CXX)
 add_executable(football_scout ./src/main.cpp ./src/CsvParser.cpp
         src/FeatureEngineer.h
-        src/FeatureEngineer.cpp)
+        src/FeatureEngineer.cpp
+        src/ScoringEngine.h
+        src/ScoringEngine.cpp)
