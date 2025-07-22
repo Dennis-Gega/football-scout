@@ -39,7 +39,48 @@ public:
           name(name), position(position) {
     }
 
-    void print_info() const;
+    void print_info() const {
+        // Helper functions to print section header
+        auto print_header = [](const std::string& header) {
+            std::cout << "\n=== " << header << " ===\n";
+        };
+
+        // Basic Information
+        print_header("Basic Information");
+        std::cout << "Player ID: " << player_id << '\n'
+                  << "Name: " << name << '\n'
+                  << "Position: " << position << '\n'
+                  << "Value: " << value << '\n'
+                  << "Performance Score: " << performance_score << '\n';
+
+        // Raw Statistics
+        print_header("Raw Statistics");
+        std::cout << "Age: " << age << '\n'
+                  << "Goals: " << goals << '\n'
+                  << "Assists: " << assists << '\n'
+                  << "Goals per 90: " << goals_per_90 << '\n'
+                  << "Assists per 90: " << assists_per_90 << '\n'
+                  << "Goals contributions per 90: " << goal_contributions_per_90 << '\n';
+
+        // Normalized Values
+        print_header("Normalized Values");
+        std::cout << "Age: " << normalized_age << '\n'
+                  << "Goals: " << normalized_goals << '\n'
+                  << "Assists: " << normalized_assists << '\n'
+                  << "Goals per 90: " << normalized_goals_per_90 << '\n'
+                  << "Assists per 90: " << normalized_assists_per_90 << '\n'
+                  << "Goals contributions per 90: " << normalized_goal_contributions_per_90 << '\n';
+
+        // Percentile Rankings
+        print_header("Percentile Rankings");
+        std::cout << "Age: " << percentile_rank_age << '\n'
+                  << "Goals: " << percentile_rank_goals << '\n'
+                  << "Assists: " << percentile_rank_assists << '\n'
+                  << "Goals per 90: " << percentile_rank_goals_per_90 << '\n'
+                  << "Assists per 90: " << percentile_rank_assists_per_90 << '\n'
+                  << "Goals contributions per 90: " << percentile_rank_goal_contributions_per_90 << '\n'
+                  << "Value: " << percentile_rank_value << '\n';
+    }
 
     // Raw values
     std::string getName() const { return name; }
@@ -54,8 +95,8 @@ public:
     int getAge() const { return age; }
     int getGoals() const { return goals; }
     int getAssists() const { return assists; }
-    
-    
+
+
     void setName(std::string n) { name = n; }
     void setPosition(Position p) { position = p; }
     void setValue(long long v) { value = v; }

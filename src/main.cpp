@@ -13,7 +13,6 @@ int main()
     ScoringEngine::calculateAllPercentiles(players);
     ScoringEngine::calculateAllPerformanceScores(players);
     ScoringEngine::calculateAllUndervaluationScores(players);
-    FeatureEngineer::generateReport(players, 10); //
-
+    FeatureEngineer::generateReport(players, 10);
     return 0;
 }
