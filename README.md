@@ -102,3 +102,10 @@ The system processes the following player attributes:
    ```bash
    git clone https://github.com/Dennis-Gega/football_scout.git
    cd football_scout
+2. **Build and run the program**
+   ```bash
+   mkdir build
+   cd build
+   cmake .
+   cmake --build .
+   ./football_scout
