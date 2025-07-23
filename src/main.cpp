@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "CsvParser.h"
 #include "FeatureEngineer.h"
+#include "PlayerInput.h"
 #include "ReportGenerator.h"
 #include "ScoringEngine.h"
 #include <iostream>
@@ -15,6 +16,8 @@ int main()
     ScoringEngine::calculateAllPerformanceScores(players);
     ScoringEngine::calculateAllUndervaluationScores(players);
     
-    ReportGenerator::printSinglePlayerReport(players[4]);
+    Player player = PlayerInput::generatePlayerFromInput();
+    ReportGenerator::printSinglePlayerReport(player);
+    
     return 0;
 }
