@@ -12,4 +12,6 @@ add_executable(football_scout
         src/ReportGenerator.h
         src/ReportGenerator.cpp
         src/PlayerInput.h
-        src/PlayerInput.cpp)
+        src/PlayerInput.cpp
+        src/FootballScout.h
+        src/FootballScout.cpp)

@@ -39,21 +39,6 @@ public:
           name(name), position(position) {
     }
 
-    void print_info() const {
-        // Helper functions to print section header
-        auto print_header = [](const std::string& header) {
-            std::cout << "\n=== " << header << " ===\n";
-        };
-
-        // Basic Information
-        std::cout << "Player ID: " << player_id << '\n'
-                  << "Name: " << name << '\n'
-                  << "Position: " << position << '\n'
-                  << "Value: " << value << '\n'
-                  << "Performance Score: " << performance_score << '\n'
-                  << "\n\n\n" ;
-    }
-
     // Raw values
     std::string getName() const { return name; }
     Position getPosition() const { return position; }

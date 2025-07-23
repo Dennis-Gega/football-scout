@@ -1,7 +1,9 @@
 #ifndef FEATURE_ENGINEER_H
 #define FEATURE_ENGINEER_H
-#include <vector>
+
 #include "Player.h"
+
+#include <vector>
 
 template<typename T>
 struct MinMax {
@@ -43,7 +45,6 @@ public:
      *                collection of players whose numerical attributes need to be normalized.
      */
     static void normalizeNumericalFeatures(std::vector<Player>& players);
-    static void generateReport(const std::vector<Player>& players, int num_top_players);
 
     static std::vector<int>& getAllAges() { return all_ages; }
     static std::vector<int>& getAllGoals() { return all_goals; }
@@ -54,11 +55,6 @@ public:
     static std::vector<long long>& getAllValues() { return all_values; }
 private:
     static void sortByUndervaluationScore(std::vector<Player> &players);
-    /**
-     * @brief Prints a formatted header for each position group in the report
-     * @param pos The position (FORWARD, MIDFIELDER, or DEFENDER) to create the header for
-     */
-    static void printPositionHeader(Position pos);
 
     /**
      * @brief Calculates statistical information for all numerical attributes across all players
