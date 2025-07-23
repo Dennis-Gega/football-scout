@@ -1,6 +1,6 @@
 # Football Scout
 
-A sophisticated C++ application that analyzes real-world football player data to identify undervalued players using advanced statistical analysis and data science techniques. The system processes player performance metrics and market values to calculate performance scores and undervaluation ratings.
+A C++ application that analyzes real-world football player data to identify undervalued players using statistical analysis and data science techniques. The system processes player performance metrics and market values to calculate performance scores and undervaluation ratings.
 
 ## Overview
 
