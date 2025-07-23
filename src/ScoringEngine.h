@@ -35,7 +35,7 @@ public:
      * @param player The Player object for which the scores are to be calculated.
      */
     static void evaluateSinglePlayer(Player& player);
-    
+
     // Getters for position weights
     static const std::map<std::string, double>& getForwardWeights();
     static const std::map<std::string, double>& getMidfielderWeights();
@@ -54,4 +54,4 @@ private:
     static double calculatePercentileRank(std::vector<T> &values, T value);
 };
 
-#endif
+#endif // SCORINGENGINE_H

@@ -8,4 +8,6 @@ add_executable(football_scout
         src/FeatureEngineer.h
         src/FeatureEngineer.cpp
         src/ScoringEngine.h
-        src/ScoringEngine.cpp)
+        src/ScoringEngine.cpp
+        src/ReportGenerator.h
+        src/ReportGenerator.cpp)

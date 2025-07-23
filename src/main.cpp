@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "CsvParser.h"
 #include "FeatureEngineer.h"
+#include "ReportGenerator.h"
 #include "ScoringEngine.h"
 #include <iostream>
 
@@ -13,6 +14,7 @@ int main()
     ScoringEngine::calculateAllPercentiles(players);
     ScoringEngine::calculateAllPerformanceScores(players);
     ScoringEngine::calculateAllUndervaluationScores(players);
-    FeatureEngineer::generateReport(players, 10);
+    
+    ReportGenerator::printSinglePlayerReport(players[4]);
     return 0;
 }
